@@ -1,12 +1,15 @@
 from django.urls import include, path
-from rest_framework import routers
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'AllowedNumber', views.AllowedNumberViewSet)
-router.register(r'NumbersLogs', views.NumberLogsViewSet)
-router.register(r'Users', views.UsersViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('AllowedNumber/', views.AllowedNumberView.as_view()),
+    path('AllowedNumber/<int:id>', views.AllowedNumberView.as_view()),
+    path('AllowedNumber/<int:id>/update/', views.AllowedNumberUpdate.as_view()),
+    path('NumbersLogs/', views.NumberLogsView.as_view()),
+    path('NumbersLogs<int:id>', views.NumberLogsView.as_view()),
+    path('NumbersLogs/<int:id>/update/', views.NumberLogsUpdateView.as_view()),
+    path('Users/', views.UsersView.as_view()),
+    path('NumbersLogs<str:login>', views.UsersView.as_view()),
+    path('NumbersLogs/<str:login>/update/', views.UsersUpdateView.as_view())
 ]

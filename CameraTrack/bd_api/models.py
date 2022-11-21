@@ -22,7 +22,7 @@ class NumbersLogs(models.Model):
 
 
 class Users(models.Model):
-    login = models.TextField()
+    login = models.TextField(primary_key=True)
     full_name = models.TextField()
     password = models.TextField()
     salt = models.CharField(max_length=5)
